@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Project">
+      <UniqueIdentifier>{e1e23608-224e-4b22-935f-ec03b5548c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Info">
+      <UniqueIdentifier>{d96bfe75-220b-4c57-b2e4-58ac0d7c5bc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Vector">
+      <UniqueIdentifier>{9e6ce923-8b71-4404-b2b9-e0ff322315a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Game">
+      <UniqueIdentifier>{044e5053-57a4-45e4-b7b1-098c5941d5fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Object">
+      <UniqueIdentifier>{3bb2fe90-7627-4819-9a7d-cfda4e1817f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Object\Player">
+      <UniqueIdentifier>{1ae6256b-d5a9-4b5a-85d3-be766bfe8581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Object\Grid">
+      <UniqueIdentifier>{9f718571-cb24-427b-a40d-7ff1aa622620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Object\Unit">
+      <UniqueIdentifier>{ea10769d-6fc2-48ca-a0d5-116da5982981}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Bullet">
+      <UniqueIdentifier>{bc383289-39fa-4200-add5-267bfae4c63b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Pool">
+      <UniqueIdentifier>{3cdb96c0-2505-4663-a52b-c7ca43273bcb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Project\Object\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Project\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Project\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Project\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>Project\Object\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Project\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitPool.cpp">
+      <Filter>Project\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolTemplate.cpp">
+      <Filter>Project\Pool</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Info.h">
+      <Filter>Project\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Project\Object\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Project\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Project\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Project\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>Project\Object\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Project\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolTemplate.h">
+      <Filter>Project\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitPool.h">
+      <Filter>Project\Pool</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
