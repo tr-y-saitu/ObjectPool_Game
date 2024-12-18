@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Common.h"
 #include "Unit.h"
 #include "PoolTemplate.h"
@@ -7,52 +7,54 @@
 class Unit;
 
 /// <summary>
-/// Šiqì¬
+/// æ ¼å­ä½œæˆ
 /// </summary>
 class Grid
 {
 public:
-	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	/// </summary>
-	Grid();
+    /// <summary>
+    /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+    /// </summary>
+    Grid();
 
-	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
-	/// </summary>
-	~Grid();
+    /// <summary>
+    /// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+    /// </summary>
+    ~Grid();
 
-	/// <summary>
-	/// ‰Šú‰»
-	/// </summary>
-	void Initialize();
-	
-	/// <summary>
-	/// XV
-	/// </summary>
-	void Update(Unit* player);
-	
-	/// <summary>
-	/// •`‰æ
-	/// </summary>
-	void Draw();
+    /// <summary>
+    /// åˆæœŸåŒ–
+    /// </summary>
+    void Initialize();
 
-	void add(Unit* unit);
-	void remove(Unit* unit);
-	void hitCheck(Unit* player);
-	bool collisionCheck(Unit* a, Unit* b);
+    /// <summary>
+    /// æ›´æ–°
+    /// </summary>
+    void Update(Unit* player);
+
+    /// <summary>
+    /// æç”»
+    /// </summary>
+    void Draw();
+
+    void add(Unit* unit);
+    void remove(Unit* unit);
+    void hitCheck(Unit* player);
+    bool collisionCheck(Unit* a, Unit* b);
 private:
 
-	void spawnBullets(int count);
+    void spawnBullets(int count);
 
-	// ’è”
-	int HorizontalSplit	= 64;	// ‰¡•ªŠ„”
-	int VerticalSplit	= 64;	// c•ªŠ„”
-	int GridSizeWidth	= 64;	// Šiq‚Ì•
-	int GridSizeHeight	= 64;	// Šiq‚Ì‚‚³
+    // å®šæ•°
+    int HorizontalSplit = 64;	// æ¨ªåˆ†å‰²æ•°
+    int VerticalSplit = 64;	// ç¸¦åˆ†å‰²æ•°
+    int GridSizeWidth = 64;	// æ ¼å­ã®å¹…
+    int GridSizeHeight = 64;	// æ ¼å­ã®é«˜ã•
 
 
-	// ƒOƒŠƒbƒhó‚ÌƒZƒ‹ƒŠƒXƒg
-	vector<vector<list<Unit*>>> cellList;
+    // ã‚°ãƒªãƒƒãƒ‰çŠ¶ã®ã‚»ãƒ«ãƒªã‚¹ãƒˆ
+    vector<vector<list<Unit*>>> cellList;
+    list<list<list<Unit*>>> listsss;
+
 	ObjectPool<Bullet> bulletPool;
 };

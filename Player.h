@@ -1,44 +1,44 @@
-#pragma once
+ï»¿#pragma once
 #include "Common.h"
 #include "Unit.h"
 
 /// <summary>
-/// ƒvƒŒƒCƒ„[
+/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 /// </summary>
 class Player : public Unit
 {
 public:
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	Player();
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~Player();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize() override;
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update() override;
 
 	/// <summary>
-	/// •`‰æ
+	/// æç”»
 	/// </summary>
 	void Draw() override;
 
 private:
 	const int HitBoxSize = 16;
-	const int MoveSpeed = 1;	// ˆÚ“®‘¬“x
+	const int MoveSpeed = 4;	// ç§»å‹•é€Ÿåº¦
 
 	/// <summary>
-	/// ˆÚ“®XV
+	/// ç§»å‹•æ›´æ–°
 	/// </summary>
 	void UpdateMove();
 };

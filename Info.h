@@ -1,62 +1,59 @@
-#pragma once
+﻿#pragma once
 
-//�����肽������
+//今回作りたいもの
 //
-//�EGrid�N���X��Unit�N���X(���p������Bullet�N���X) ��20��
-//�EGrid�N���X�̊e�Z�������f�[�^�̃f�[�^�^�́Alist<Unit*>
-//�E���̑o�������X�g�ɑ΂��āAUnit�f�[�^�̒ǉ��E�폜�ł���悤�ɂ���B
-//�EUnit�f�[�^�̓I�u�W�F�N�g�v�[��(��19��)���玝���Ă���B
-//�EUnit�^�̔z���list<Unit*>�łȂ����킹�Ė��g�p���X�g�����APool�N���X�ŊǗ�����B
+//・GridクラスとUnitクラス(を継承したBulletクラス) ※20章
+//・Gridクラスの各セルが持つデータのデータ型は、Unit*
+//・この双方向リストに対して、Unitデータの追加・削除できるようにする。
+//・Unitデータはオブジェクトプール(※19章)から持ってくる。
+//・Unit型の配列をポインタでつなぎ合わせて未使用リストを作り、Poolクラスで管理する。
 //
-//��Pool�N���X�̋@�\��Grid�N���X�ɓ������Ă��ǂ��B
+//※Poolクラスの機能をGridクラスに統合しても良い。
 //
-//�K�v�Ȏ���
-//�EPool::Pool()		���g�p���X�g�̏���������
-//�EPool::Create(�c)	�V�K�f�[�^�̍쐬����(���g�p���X�g����Unit�f�[�^���ЂƂ�Grid�N���X�ɓo�^����)
-//�e�L�X�g�ƕK�v�Ȉ������قȂ�̂Œ��ӂ��邱�ƁB
-//�EPool::add(Unit*)	���g�pUnit�f�[�^�𖢎g�p���X�g�ɒǉ����鏈��
+//必要な実装
+//・Pool::Pool()		未使用リストの初期化処理
+//・Pool::Create(…)	新規データの作成処理(未使用リストからUnitデータをひとつGridクラスに登録する)
+//テキストと必要な引数が異なるので注意すること。
+//・Pool::add(Unit*)	未使用Unitデータを未使用リストに追加する処理
 //
-//�EUnit::init(�c)	�����o�[�ϐ��̏���������
-//�O�チ���o�[�ւ̃|�C���^�͕s�v
-//�EUnit::update()	�ړ������E�O���b�h�ւ̍ēo�^�����B�e�L�X�g�ł�move()�֐�
-//�EUnit::draw()		�L�����N�^(����͒e)�̕\������
+//・Unit::init(…)	メンバー変数の初期化処理
+//・Unit::update()	移動処理・グリッドへの再登録処理。テキストではmove()関数
+//・Unit::draw()		キャラクタ(今回は弾)の表示処理
 //
-//�EGrid::add(Unit*)	�Z����Unit��o�^���鏈��
-//�EGrid::remove(Unit*)	P.360��move()�֐����́A�f�[�^����菜���������֐�������B
-//�EGrid::update(�c)	�eUnit�f�[�^�̃A�b�v�f�[�g���� & ������Unit�𖢎g�p���X�g�ɖ߂�����
-//�e�L�X�g�ł�Pool::animate()�֐��AGrid::handleCell()�AGrid::move()�֐�
-//�EGrid::draw()		�eUnit�f�[�^��draw()�֐����Ăяo������
-//�EGrid::hitCheck(Unit*)	���L�����ƃZ������Unit�Ƃ̓����蔻��`�F�b�N
-// class Grid{
-// 
-// 
-// }
-// 
+//・Grid::add(Unit*)	セルにUnitを登録する処理
+//・Grid::remove(Unit*)	P.360のmove()関数内の、データを取り除く処理を関数化する。
+//・Grid::update(…)	各Unitデータのアップデート処理 & 消えたUnitを未使用リストに戻す処理
+//テキストではPool::animate()関数、Grid::handleCell()、Grid::move()関数
+//・Grid::draw()		各Unitデータのdraw()関数を呼び出す処理
+//・Grid::hitCheck(Unit*)	自キャラとセル内のUnitとの当たり判定チェック
 //
-//���̑��AGetter��Setter�֐����A�K�v������Ύ������邱�ƁB
+//その他、GetterやSetter関数も、必要があれば実装すること。
 
 
 
-// ���K
+
+
+// 演習
 // 
-// [�ۑ�A]
-// 2D�̋�ԕ���(�i�q)�̊Ǘ��v���O��������낤
+// [課題A]
+// 2Dの空間分割(格子)の管理プログラムを作ろう
 // 
-// 1.�e�������_����500�z�u���A�������ƔC�ӂ̕����Ɉړ�������B��ʒ[�Ŋ��S�e���Փ˂���B
-// 2.��ʂ�1280x960�Ƃ��A64x64�h�b�g�Ɋi�q��������B
-// 3.�i�q���Ǘ�����Grid�N���X�ƁA�e���i�[����Unit�N���X�̔z���p�ӂ���B
-// 4.�i�q��DrawBox�֐���DrawLine�֐����g�p���ĉ�ʂɕ`�悷��B
-// 5.�e��8x8�h�b�g�A���L������16x16�h�b�g�Ƃ���B
-// 6.�e���i�q�Ɏ�������A�ړ����ɏ����i�q���X�V����Ȃǂ̏�������������B
-// 7.���L�����ƒe�̓����蔻�����������B����������e��������悤�ɂ���B�e������ƍl����B
-// 8.�אڊi�q���̒e�Ƃ̔������������B
+// 1.弾をランダムに500個配置し、ゆっくりと任意の方向に移動させる。画面端で完全弾性衝突する。
+// 2.画面を1280x960とし、64x64ドットに格子分割する。
+// 3.格子を管理するGridクラスと、弾を格納するUnitクラスの配列を用意する。
+// 4.格子はDrawBox関数かDrawLine関数を使用して画面に描画する。
+// 5.弾は8x8ドット、自キャラは16x16ドットとする。
+// 6.弾を格子に持たせる、移動時に所属格子を更新するなどの処理を実装する。
+// 7.自キャラと弾の当たり判定を実装する。当たったら弾が消えるようにする。弾を取れると考える。
+// 8.隣接格子内の弾との判定も実装する。
 // 
-// [�ۑ�B]
-// ���C�V���[�g����������B
+// [課題B]
+// レイシュートを実装する。
 // 
-// 1.�}�E�X�łQ�_���N���b�N����ƁA�Q�_�Ԃ̐�����`�悷��B
-// 2.�����ɂ��ă��C�V���[�g�������s���A����ΏۂƂȂ����i�q��h��Ԃ��B
-// 3.�����Ɠ_�Ƃ̓����蔻����`�F�b�N���A���������e�������B
-// 4.�����蔻��`�F�b�N�͂P�t���[�������s���A������60�t���[����ɏ�������B�i�q�̓h��Ԃ�����������B
-// 5.�Q�_�̃N���b�N�w��́A���x�ł��ł���悤�ɂ���B
+// 1.マウスで２点をクリックすると、２点間の線分を描画する。
+// 2.線分についてレイシュート処理を行い、判定対象となった格子を塗りつぶす。
+// 3.線分と点との当たり判定をチェックし、当たった弾を消す。
+// 4.当たり判定チェックは１フレームだけ行い、線分は60フレーム後に消去する。格子の塗りつぶしも解除する。
+// 5.２点のクリック指定は、何度でもできるようにする。
+
 

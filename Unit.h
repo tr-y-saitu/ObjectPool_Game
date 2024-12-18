@@ -1,51 +1,51 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Vector.h"
 
 /// <summary>
-/// ƒ†ƒjƒbƒg
+/// ãƒ¦ãƒ‹ãƒƒãƒˆ
 /// </summary>
 class Unit
 {
 public:
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	Unit();
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	/// <param name="myTag"></param>
 	Unit(ObjectTag myTag);
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	virtual ~Unit();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	virtual void Initialize();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	virtual void Update();
 
 	/// <summary>
-	/// •`‰æ
+	/// æç”»
 	/// </summary>
 	virtual void Draw();
 
 	bool CheckCollision(Unit* other);
 
-	Vector3		position;	// À•W
+	Vector3		position;	// åº§æ¨™
 	Vector3 velocity;  // Velocity
 	bool active;
-	ObjectTag	tag;		// ƒ^ƒO
-	Vector3		direction;	// ˆÚ“®•ûŒü
+	ObjectTag	tag;		// ã‚¿ã‚°
+	Vector3		direction;	// ç§»å‹•æ–¹å‘
 private:
 
 protected:

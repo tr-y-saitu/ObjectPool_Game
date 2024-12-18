@@ -1,22 +1,22 @@
-#include "Unit.h"
+ï»¿#include "Unit.h"
 
 /// <summary>
-/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 /// </summary>
 Unit::Unit()
 {
-    // ˆ—‚È‚µ
+    // å‡¦ç†ãªã—
 }
 
 
 Unit::Unit(ObjectTag myTag)
     : tag   (myTag)
 {
-    // ˆ—‚È‚µ
+    // å‡¦ç†ãªã—
 }
 
 /// <summary>
-    /// ƒfƒXƒgƒ‰ƒNƒ^
+    /// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     /// </summary>
 Unit::~Unit()
 {
@@ -31,9 +31,8 @@ void Unit::Update()
 {
     if (!active) return;
 
-    position += velocity / 4;
+    position += velocity;
 
-    // Screen boundary collision
     if (position.x < 0 || position.x + BULLET_SIZE > SCREEN_WIDTH) velocity.x = -velocity.x;
     if (position.y < 0 || position.y + BULLET_SIZE > SCREEN_HEIGHT) velocity.y = -velocity.y;
 }
@@ -52,10 +51,10 @@ void Unit::Draw()
     }
 }
 
-// “–‚½‚è”»’è‚Ìƒƒ\ƒbƒh
+// å½“ãŸã‚Šåˆ¤å®šã®ãƒ¡ã‚½ãƒƒãƒ‰
 bool Unit::CheckCollision(Unit* other)
 {
-    // ‚±‚ÌUnit‚Æotheri•Ê‚ÌUnitj‚Æ‚ÌÕ“Ë”»’è
+    // ã“ã®Unitã¨otherï¼ˆåˆ¥ã®Unitï¼‰ã¨ã®è¡çªåˆ¤å®š
     float left1 = position.x;
     float top1 = position.y;
     float right1 = position.x + BULLET_SIZE;
@@ -66,6 +65,6 @@ bool Unit::CheckCollision(Unit* other)
     float right2 = other->position.x + BULLET_SIZE;
     float bottom2 = other->position.y + BULLET_SIZE;
 
-    // ‹éŒ`‚ªd‚È‚Á‚Ä‚¢‚é‚©”»’è
+    // çŸ©å½¢ãŒé‡ãªã£ã¦ã„ã‚‹ã‹åˆ¤å®š
     return !(right1 <= left2 || left1 >= right2 || bottom1 <= top2 || top1 >= bottom2);
 }

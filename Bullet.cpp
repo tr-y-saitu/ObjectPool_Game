@@ -1,7 +1,7 @@
-#include "Bullet.h"
+ï»¿#include "Bullet.h"
 
 /// <summary>
-/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 /// </summary>
 Bullet::Bullet()
 {
@@ -11,7 +11,7 @@ Bullet::Bullet()
 }
 
 /// <summary>
-/// ƒfƒXƒgƒ‰ƒNƒ^
+/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 /// </summary>
 Bullet::~Bullet()
 {

@@ -1,4 +1,4 @@
-#include "Player.h"
+ï»¿#include "Player.h"
 
 
 Player::Player()
@@ -19,39 +19,35 @@ void Player::Initialize()
 
 void Player::Update()
 {
-	// ˆÚ“®XV
+	// ç§»å‹•æ›´æ–°
 	UpdateMove();
 }
 
 void Player::UpdateMove()
 {
-    // “ü—Íî•ñæ“¾
+    // å…¥åŠ›æƒ…å ±å–å¾—
     auto input = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 
-    // •ûŒü‚Ì‰Šú‰»
+    // æ–¹å‘ã®åˆæœŸåŒ–
 	direction = Vector3::ZeroVector;
 
-    // “ü—Í‚É‚æ‚éˆÚ“®
-	if (input & PAD_INPUT_LEFT) { direction += {-4,0,0}; }
-	if (input & PAD_INPUT_RIGHT) { direction += {4,0,0}; }
-	if (input & PAD_INPUT_UP) { direction += {0,-4,0}; }
-	if (input & PAD_INPUT_DOWN) { direction += {0,4,0}; }
-	/*if (input & PAD_INPUT_LEFT) { direction += Vector3::LeftVector; }
+    // å…¥åŠ›ã«ã‚ˆã‚‹ç§»å‹•
+	if (input & PAD_INPUT_LEFT) { direction += Vector3::LeftVector; }
 	if (input & PAD_INPUT_RIGHT){ direction += Vector3::RightVector; }
 	if (input & PAD_INPUT_UP){ direction += Vector3::UpVector; }
-	if (input & PAD_INPUT_DOWN){ direction += Vector3::DownVector; }*/
+	if (input & PAD_INPUT_DOWN){ direction += Vector3::DownVector; }
 
-	// ˆÚ“®’l‚ª‚ ‚ê‚Î
+	// ç§»å‹•å€¤ãŒã‚ã‚Œã°
 	if (direction.Length() > 0)
 	{
-		// ³‹K‰»
+		// æ­£è¦åŒ–
 		direction.Normalize();
 	}
 
-	// ˆÚ“®—Ê‚ğo‚·
+	// ç§»å‹•é‡ã‚’å‡ºã™
 	auto velocity = direction * MoveSpeed;
 
-	// ˆÚ“®
+	// ç§»å‹•
 	position += velocity;
 }
 
