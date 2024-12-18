@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+// デザインパターン３ (No.360参照)
+
 //今回作りたいもの
 //
 //・GridクラスとUnitクラス(を継承したBulletクラス) ※20章
@@ -14,18 +16,18 @@
 //・Pool::Pool()		未使用リストの初期化処理
 //・Pool::Create(…)	新規データの作成処理(未使用リストからUnitデータをひとつGridクラスに登録する)
 //テキストと必要な引数が異なるので注意すること。
-//・Pool::add(Unit*)	未使用Unitデータを未使用リストに追加する処理
+//・Pool::Add(Unit*)	未使用Unitデータを未使用リストに追加する処理
 //
 //・Unit::init(…)	メンバー変数の初期化処理
 //・Unit::update()	移動処理・グリッドへの再登録処理。テキストではmove()関数
 //・Unit::draw()		キャラクタ(今回は弾)の表示処理
 //
-//・Grid::add(Unit*)	セルにUnitを登録する処理
-//・Grid::remove(Unit*)	P.360のmove()関数内の、データを取り除く処理を関数化する。
+//・Grid::Add(Unit*)	セルにUnitを登録する処理
+//・Grid::Remove(Unit*)	P.360のmove()関数内の、データを取り除く処理を関数化する。
 //・Grid::update(…)	各Unitデータのアップデート処理 & 消えたUnitを未使用リストに戻す処理
 //テキストではPool::animate()関数、Grid::handleCell()、Grid::move()関数
 //・Grid::draw()		各Unitデータのdraw()関数を呼び出す処理
-//・Grid::hitCheck(Unit*)	自キャラとセル内のUnitとの当たり判定チェック
+//・Grid::HitCheck(Unit*)	自キャラとセル内のUnitとの当たり判定チェック
 //
 //その他、GetterやSetter関数も、必要があれば実装すること。
 

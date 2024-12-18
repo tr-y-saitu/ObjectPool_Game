@@ -54,12 +54,6 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Project\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="UnitPool.cpp">
-      <Filter>Project\Pool</Filter>
-    </ClCompile>
-    <ClCompile Include="PoolTemplate.cpp">
-      <Filter>Project\Pool</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Info.h">
@@ -87,9 +81,6 @@
       <Filter>Project\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="PoolTemplate.h">
-      <Filter>Project\Pool</Filter>
-    </ClInclude>
-    <ClInclude Include="UnitPool.h">
       <Filter>Project\Pool</Filter>
     </ClInclude>
   </ItemGroup>

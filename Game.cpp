@@ -24,7 +24,7 @@ void Game::Update()
 {
     grid->Update(player);
     player->Update();
-    grid->hitCheck(player);
+    grid->HitCheck(player);
 }
 
 void Game::Draw()

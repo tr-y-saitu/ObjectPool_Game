@@ -37,9 +37,13 @@ public:
     /// </summary>
     void Draw();
 
-    void add(Unit* unit);
-    void remove(Unit* unit);
-    void hitCheck(Unit* player);
+    void Add(Unit* unit);
+
+
+
+
+    void Remove(Unit* unit);
+    void HitCheck(Unit* player);
     bool collisionCheck(Unit* a, Unit* b);
 private:
 

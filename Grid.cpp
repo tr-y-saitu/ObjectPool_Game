@@ -1,28 +1,28 @@
-#include "Common.h"
+ï»¿#include "Common.h"
 #include "Grid.h"
 
 /// <summary>
-/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 /// </summary>
 Grid::Grid()
     : bulletPool(5000)
 {
-    // cellList ‚Ì‰Šú‰»
-    cellList.resize(HorizontalSplit);  // ‰¡‚Ì•ªŠ„”‚ÉƒŠƒTƒCƒY
+    // cellList ã®åˆæœŸåŒ–
+    cellList.resize(HorizontalSplit);  // æ¨ªã®åˆ†å‰²æ•°ã«ãƒªã‚µã‚¤ã‚º
     for (int x = 0; x < HorizontalSplit; ++x) {
-        cellList[x].resize(VerticalSplit);  // c‚Ì•ªŠ„”‚ÉƒŠƒTƒCƒY
+        cellList[x].resize(VerticalSplit);  // ç¸¦ã®åˆ†å‰²æ•°ã«ãƒªã‚µã‚¤ã‚º
     }
 }
 
 /// <summary>
-/// ƒfƒXƒgƒ‰ƒNƒ^
+/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 /// </summary>
 Grid::~Grid()
 {
 }
 
 /// <summary>
-/// ‰Šú‰»
+/// åˆæœŸåŒ–
 /// </summary>
 void Grid::Initialize()
 {
@@ -31,11 +31,11 @@ void Grid::Initialize()
 
 
 /// <summary>
-/// XV
+/// æ›´æ–°
 /// </summary>
 void Grid::Update(Unit* player)
 {
-    // Šiq‚²‚Æ‚Éˆ—
+    // æ ¼å­ã”ã¨ã«å‡¦ç†
     for (int x = 0; x < HorizontalSplit; ++x)
     {
         for (int y = 0; y < VerticalSplit; ++y)
@@ -45,12 +45,12 @@ void Grid::Update(Unit* player)
             {
                 Unit* unit = *it;
                 if (!unit->active) {
-                    // ”ñƒAƒNƒeƒBƒu‚Èƒ†ƒjƒbƒg‚Ííœ‚µAƒv[ƒ‹‚É–ß‚·
+                    // éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªãƒ¦ãƒ‹ãƒƒãƒˆã¯å‰Šé™¤ã—ã€ãƒ—ãƒ¼ãƒ«ã«æˆ»ã™
                     it = cell.erase(it);
-                    bulletPool.add(static_cast<Bullet*>(unit));  // g—pŒã‚Éƒv[ƒ‹‚É–ß‚·
+                    bulletPool.Add(static_cast<Bullet*>(unit));  // ä½¿ç”¨å¾Œã«ãƒ—ãƒ¼ãƒ«ã«æˆ»ã™
                 }
                 else {
-                    unit->Update();  // ƒAƒNƒeƒBƒu‚Èƒ†ƒjƒbƒg‚ÍXVˆ—
+                    unit->Update();  // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªãƒ¦ãƒ‹ãƒƒãƒˆã¯æ›´æ–°å‡¦ç†
                     ++it;
                 }
             }
@@ -59,22 +59,22 @@ void Grid::Update(Unit* player)
 }
 
 /// <summary>
-/// •`‰æ
+/// æç”»
 /// </summary>
 void Grid::Draw()
 {
-	// ‰¡ƒ‹[ƒv‰ñ”
+	// æ¨ªãƒ«ãƒ¼ãƒ—å›æ•°
 	int horizonSplitCount = ScreenWidth / HorizontalSplit;
 	
-	// cƒ‹[ƒv‰ñ”
+	// ç¸¦ãƒ«ãƒ¼ãƒ—å›æ•°
 	int verticalSplitCount = ScreenHeight / VerticalSplit;
 
-	// ƒOƒŠƒbƒh•`‰æ
+	// ã‚°ãƒªãƒƒãƒ‰æç”»
     for (int i = 0; i < horizonSplitCount; i++)
     {
         for (int j = 0; j < verticalSplitCount; j++)
         {
-            // ŠeƒOƒŠƒbƒh‚Ì¶ã‚Æ‰E‰º‚ÌÀ•W‚ğŒvZ‚µ‚Ä•`‰æ
+            // å„ã‚°ãƒªãƒƒãƒ‰ã®å·¦ä¸Šã¨å³ä¸‹ã®åº§æ¨™ã‚’è¨ˆç®—ã—ã¦æç”»
             int left    = i * GridSizeWidth;
             int top     = j * GridSizeHeight;
             int right   = left + GridSizeWidth;
@@ -84,7 +84,7 @@ void Grid::Draw()
         }
     }
 
-    // ’eŠÛ‚ğ•\¦
+    // å¼¾ä¸¸ã‚’è¡¨ç¤º
     for (int x = 0; x < HorizontalSplit; ++x)
     {
         for (int y = 0; y < VerticalSplit; ++y)
@@ -95,7 +95,7 @@ void Grid::Draw()
                 Unit* unit = *it;
                 if (unit->active)
                 {
-                    unit->Draw();  // ƒAƒNƒeƒBƒu‚Èƒ†ƒjƒbƒg‚ÍXVˆ—
+                    unit->Draw();  // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªãƒ¦ãƒ‹ãƒƒãƒˆã¯æ›´æ–°å‡¦ç†
                     ++it;
                 }
             }
@@ -105,7 +105,7 @@ void Grid::Draw()
 }
 
 
-void Grid::add(Unit* unit)
+void Grid::Add(Unit* unit)
 {
     int cx = static_cast<int>(unit->position.x) / CELL_SIZE;
     int cy = static_cast<int>(unit->position.y) / CELL_SIZE;
@@ -114,16 +114,16 @@ void Grid::add(Unit* unit)
     }
 }
 
-void Grid::remove(Unit* unit)
+void Grid::Remove(Unit* unit)
 {
     int cx = static_cast<int>(unit->position.x) / CELL_SIZE;
     int cy = static_cast<int>(unit->position.y) / CELL_SIZE;
     if (cx >= 0 && cx < GRID_WIDTH && cy >= 0 && cy < GRID_HEIGHT) {
-        cellList[cx][cy].remove(unit);
+        cellList[cx][cy].Remove(unit);
     }
 }
 
-void Grid::hitCheck(Unit* player)
+void Grid::HitCheck(Unit* player)
 {
     for (int x = 0; x < HorizontalSplit; ++x)
     {
@@ -135,12 +135,12 @@ void Grid::hitCheck(Unit* player)
                 Unit* unit = *it;
                 if (unit->active && collisionCheck(player, unit))
                 {
-                    unit->active = false; // ’eŠÛ‚ğ”ñƒAƒNƒeƒBƒu‚É‚·‚é
-                    it = unitList.erase(it); // “–‚½‚è”»’è‚ÅÁ‚³‚ê‚½ƒ†ƒjƒbƒg‚ğƒŠƒXƒg‚©‚çíœ
+                    unit->active = false; // å¼¾ä¸¸ã‚’éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ã™ã‚‹
+                    it = unitList.erase(it); // å½“ãŸã‚Šåˆ¤å®šã§æ¶ˆã•ã‚ŒãŸãƒ¦ãƒ‹ãƒƒãƒˆã‚’ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤
                 }
                 else
                 {
-                    ++it; // ƒ†ƒjƒbƒg‚ª”ñƒAƒNƒeƒBƒu‚Å‚È‚¢ê‡AŸ‚Ìƒ†ƒjƒbƒg‚Öi‚Ş
+                    ++it; // ãƒ¦ãƒ‹ãƒƒãƒˆãŒéã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã§ãªã„å ´åˆã€æ¬¡ã®ãƒ¦ãƒ‹ãƒƒãƒˆã¸é€²ã‚€
                 }
             }
         }
@@ -152,23 +152,23 @@ bool Grid::collisionCheck(Unit* a, Unit* b)
     return (a->position - b->position).Length() < PLAYER_SIZE * 4;
 }
 
-// Bullet‚ğƒ‰ƒ“ƒ_ƒ€‚ÈˆÊ’u‚Å¶¬
+// Bulletã‚’ãƒ©ãƒ³ãƒ€ãƒ ãªä½ç½®ã§ç”Ÿæˆ
 void Grid::spawnBullets(int count)
 {
     for (int i = 0; i < count; ++i) {
-        Bullet* bullet = bulletPool.create();  // ƒv[ƒ‹‚©‚çBullet‚ğæ“¾
+        Bullet* bullet = bulletPool.Create();  // ãƒ—ãƒ¼ãƒ«ã‹ã‚‰Bulletã‚’å–å¾—
         if (bullet) {
-            // ƒ‰ƒ“ƒ_ƒ€‚ÈˆÊ’u‚É”z’u
-            int x = rand() % HorizontalSplit;  // ƒ‰ƒ“ƒ_ƒ€‚È‰¡À•W
-            int y = rand() % VerticalSplit;    // ƒ‰ƒ“ƒ_ƒ€‚ÈcÀ•W
+            // ãƒ©ãƒ³ãƒ€ãƒ ãªä½ç½®ã«é…ç½®
+            int x = rand() % HorizontalSplit;  // ãƒ©ãƒ³ãƒ€ãƒ ãªæ¨ªåº§æ¨™
+            int y = rand() % VerticalSplit;    // ãƒ©ãƒ³ãƒ€ãƒ ãªç¸¦åº§æ¨™
 
             bullet->position.x = rand() % SCREEN_WIDTH;
             bullet->position.y = rand() % SCREEN_HEIGHT;
-            bullet->velocity.x = rand() % 10 - 5;  // ƒ‰ƒ“ƒ_ƒ€‚È‘¬“x
-            bullet->velocity.y = rand() % 10 - 5;  // ƒ‰ƒ“ƒ_ƒ€‚È‘¬“x
+            bullet->velocity.x = rand() % 10 - 5;  // ãƒ©ãƒ³ãƒ€ãƒ ãªé€Ÿåº¦
+            bullet->velocity.y = rand() % 10 - 5;  // ãƒ©ãƒ³ãƒ€ãƒ ãªé€Ÿåº¦
             bullet->active = true;
 
-            // ƒ‰ƒ“ƒ_ƒ€‚ÈƒZƒ‹‚É’e‚ğ’Ç‰Á
+            // ãƒ©ãƒ³ãƒ€ãƒ ãªã‚»ãƒ«ã«å¼¾ã‚’è¿½åŠ 
             cellList[x][y].push_back(bullet);
         }
     }

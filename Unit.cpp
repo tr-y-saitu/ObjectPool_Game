@@ -31,7 +31,7 @@ void Unit::Update()
 {
     if (!active) return;
 
-    position += velocity;
+    position += velocity / 4;
 
     if (position.x < 0 || position.x + BULLET_SIZE > SCREEN_WIDTH) velocity.x = -velocity.x;
     if (position.y < 0 || position.y + BULLET_SIZE > SCREEN_HEIGHT) velocity.y = -velocity.y;

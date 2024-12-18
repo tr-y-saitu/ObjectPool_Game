@@ -1,6 +1,10 @@
-#pragma once
+﻿#pragma once
 #include "Common.h"
 
+/// <summary>
+/// オブジェクトプールテンプレート
+/// </summary>
+/// <typeparam name="T"></typeparam>
 template <typename T>
 class ObjectPool
 {
@@ -12,14 +16,14 @@ public:
         }
     }
 
-    T* create() {
+    T* Create() {
         if (unused.empty()) return nullptr;
         T* obj = unused.front();
         unused.pop_front();
         return obj;
     }
 
-    void add(T* obj) {
+    void Add(T* obj) {
         unused.push_back(obj);
         obj->active = false;
     }
